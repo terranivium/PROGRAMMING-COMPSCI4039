@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class Lab3Ex {
-	
+
 	private static double pi = Math.PI; // declaring PI constant
 	private double radius; // declaring radius variable
 
@@ -40,13 +42,17 @@ public class Lab3Ex {
 	}
 
 	public static void main(String[] args){
-		// Create two different circle instances with different radii
-		Lab3Ex circle1 = new Lab3Ex(5.6);
-		Lab3Ex circle2 = new Lab3Ex(3.2);
-		// Print summary for each circle
-		String summary1 = circle1.sumariseCirc();
-		String summary2 = circle2.sumariseCirc();
 
-		System.out.println(summary1 + "\n" + summary2);
+		// User input of circle radius
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Please enter radius of circle, followed by pressing the return key...");
+		double userRadius = keyboard.nextDouble();
+
+		// Create two different circle instances with different radii
+		Lab3Ex circle = new Lab3Ex(userRadius); 
+		// Print summary for each circle
+		String summary = circle.sumariseCirc();
+
+		System.out.println(summary);
 	}
 }
