@@ -106,7 +106,7 @@ public class AssEx1 {
 
     // Task 2 multiples method, prints the multiples of the given int (m), up to the max multiplier (max)
     public static void multiples(int m, int max){
-        for(int i = 1; i <= max; i++)
+        for(int i = 1; m * i <= max; i++)
             System.out.println(m * i);
     }
 
