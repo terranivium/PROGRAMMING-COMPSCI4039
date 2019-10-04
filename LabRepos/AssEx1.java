@@ -16,7 +16,7 @@
 /*
     Non task-specific marks:
      - Add a comment with your name and matric here - [1 mark]
-     // Wesley Scott, 20460681S
+     // Wesley Scott, 2460681S
      - Clear code commenting [1 mark]
      - Use of correct Java variable naming conventions [1 mark]
 */
@@ -31,8 +31,6 @@ public class AssEx1 {
             Create a method called welcome that prints the word "Hello" followed by whatever
             is stored in the variable 'name'. It will be called by the line below.
         */
-
-        // Task 1 method is called
         welcome(name);
 
         /* Task 2 [3 marks]
@@ -44,8 +42,6 @@ public class AssEx1 {
             9
             Your method *must* use a loop
         */
-
-        // Task 2 input variables and method called using those as arguments
         int m = 7;
         int max = 100;
         multiples(m,max); 
