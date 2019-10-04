@@ -38,9 +38,6 @@ public class Person{
 	}
 
 	public String toString(){
-		return name + nickname + age;
-	}
-
-
-	
+		return name + age + nickname;
+	}	
 }
