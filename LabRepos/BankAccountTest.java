@@ -3,11 +3,17 @@ public class BankAccountTest{
 		Person geoff = new Person("Geoff", 28, "G");
 		Person ruth = new Person("Ruth", 56, "R");
 
-		BankAccount geoffSavings = new BankAccount(geoff);
+		SavingsAccount geoffSavings = new SavingsAccount(geoff);
 		BankAccount geoffCurrent = new BankAccount(geoff);
 
-		BankAccount ruthSavings = new BankAccount(ruth);
+		SavingsAccount ruthSavings = new SavingsAccount(ruth);
 		BankAccount ruthCurrent = new BankAccount(ruth);
+
+		geoffSavings.setAccountBalance(28000);
+		geoffCurrent.setAccountBalance(10000);
+
+		ruthSavings.setAccountBalance(78000);
+		ruthCurrent.setAccountBalance(2000);
 
 		System.out.print(geoffSavings + "\n");
 		System.out.print(geoffCurrent + "\n");
@@ -32,5 +38,15 @@ public class BankAccountTest{
 
 		System.out.print(ruthSavings + "\n");
 		System.out.print(ruthCurrent + "\n");
+
+		geoffSavings.addInterest();
+		ruthSavings.addInterest();
+
+		System.out.print(geoffSavings + "\n");
+		System.out.print(geoffCurrent + "\n");
+
+		System.out.print(ruthSavings + "\n");
+		System.out.print(ruthCurrent + "\n");
+
 	}
 }

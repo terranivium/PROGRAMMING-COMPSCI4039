@@ -23,7 +23,6 @@
 import java.util.Scanner;
 
 public class AssEx1 {
-
     public static void main(String[] args) {
         String name = "Fred";
         
@@ -97,11 +96,13 @@ public class AssEx1 {
 
     // Task 1 welcome method, prints "Hello" plus the string (name) which was passed when calling the welcome method in main.
     public static void welcome(String name){
-        System.out.println("Hello, " + name);
+
+        System.out.println("Hello " + name);
     }
 
-    // Task 2 multiples method, prints the multiples of the given int (m), up to the max multiplier (max)
+    // Task 2 multiples method, prints the multiples of the given int (m), up to the output maximum (max)
     public static void multiples(int m, int max){
+
         for(int i = 1; m * i <= max; i++)
             System.out.println(m * i);
     }
@@ -109,12 +110,14 @@ public class AssEx1 {
     // Task 3 number check method, checks the given int input (m) is greater than 5 and less than 10
     // Returns to main true only when both conditions are met, otherwise returned value is false
     public static boolean check(int m){
+
         if(m > 5 && m < 10) return true;
         else return false;
     }
 
     // Task 4 calculator method
     public static void calculator(){
+
         Scanner keyboard = new Scanner(System.in); //creating instance of scanner, recieving keyboard input as argument
 
         System.out.println("*Bleep Bloop* Glasgow Instruments SD-001...");
@@ -128,53 +131,59 @@ public class AssEx1 {
         System.out.println("Please enter the second digit of your calculation:");
         int input2 = keyboard.nextInt(); //second user input int stored in input2
 
-        //switch checks what is stored in operator from desired cases and executes required code
+        //switch checks what is stored in operator against desired cases and executes required code
         //error is provided to user if a non-desired character is stored in opertor
         switch(operator){
             case "+":
                 int answer = input1 + input2;
-                System.out.printf("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);
+                String result = String.format("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);
+                System.out.print(result);
                 break;
             case "-":
                 answer = input1 - input2;
-                System.out.printf("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);                
+                result = String.format("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);
+                System.out.print(result);                
                 break;                
             case "*":
                 answer = input1 * input2;
-                System.out.printf("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);                
+                result = String.format("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);
+                System.out.print(result);                
                 break;
             case "/":
                 answer = input1 / input2;
-                System.out.printf("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);                
+                result = String.format("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);
+                System.out.print(result);                
                 break;
             case "%":
                 answer = input1 % input2;
-                System.out.printf("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);                
+                result = String.format("Calculation: %d %s %d = %04d\n", input1, operator, input2, answer);
+                System.out.print(result);                
                 break;
             default:
-                System.out.printf("Input %s is not a valid operator...\n", operator);
+                result = String.format("Input '%s' is not a valid operator...\n", operator);
+                System.out.print(result);
                 break;
         }
     }
 
-    // Task 5 method, takes number of rows and columns and generates table
+    // Task 5 method, takes given number of rows and columns and generates a table
     public static void table(int rows, int columns){
 
         int i = 0; //row counter
         int j = 0; //column counter
 
-        //input check ensures rows and columns meet requirement of being >0 and <10.
-        if((rows < 0 || rows >= 10) || (columns < 0 || columns >= 10)){
+        //input check ensures number of rows or columns meet requirement of being >0 and <10.
+        if(rows <= 0 || rows >= 10 || columns <= 0 || columns >= 10){ 
             System.out.print("Error, rows and columns must be >0 and <10\n");
         } else do{
                 System.out.print("(" + i + "," + j + ")\t");
-                do{
+                while (j < columns - 1){
                     j++; //increment columns
                     System.out.print("(" + i + "," + j + ")\t");
-                } while (j < columns - 1);
+                }
                 System.out.print("\n");
                 j = 0; //resets column counter to begin new row
-                i++;//increment rows
+                i++;   //increment rows
             } while (i < rows);
     }
 }

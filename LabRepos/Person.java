@@ -1,7 +1,7 @@
 public class Person{
-	private String name;
-	private int age;
-	private String nickname;
+	protected String name;
+	protected int age;
+	protected String nickname;
 	
 	public Person(String name, int age, String nickname){
 		this.name = name;
