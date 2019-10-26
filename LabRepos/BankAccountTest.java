@@ -9,44 +9,16 @@ public class BankAccountTest{
 		SavingsAccount ruthSavings = new SavingsAccount(ruth);
 		BankAccount ruthCurrent = new BankAccount(ruth);
 
-		geoffSavings.setAccountBalance(28000);
+		geoffSavings.setAccountBalance(100);
 		geoffCurrent.setAccountBalance(10000);
 
-		ruthSavings.setAccountBalance(78000);
-		ruthCurrent.setAccountBalance(2000);
-
 		System.out.print(geoffSavings + "\n");
 		System.out.print(geoffCurrent + "\n");
 
-		System.out.print(ruthSavings + "\n");
-		System.out.print(ruthCurrent + "\n");
-
-		geoffSavings.transferFunds(200.24, geoffCurrent);
-		ruthSavings.transferFunds(50.99, ruthCurrent);
+		geoffSavings.transferFunds(50.24, geoffCurrent);
 
 		System.out.print(geoffSavings + "\n");
 		System.out.print(geoffCurrent + "\n");
-
-		System.out.print(ruthSavings + "\n");
-		System.out.print(ruthCurrent + "\n");
-
-		geoffCurrent.transferFunds(120.23, geoffSavings);
-		ruthCurrent.transferFunds(720.00, ruthSavings);
-
-		System.out.print(geoffSavings + "\n");
-		System.out.print(geoffCurrent + "\n");
-
-		System.out.print(ruthSavings + "\n");
-		System.out.print(ruthCurrent + "\n");
-
-		geoffSavings.addInterest();
-		ruthSavings.addInterest();
-
-		System.out.print(geoffSavings + "\n");
-		System.out.print(geoffCurrent + "\n");
-
-		System.out.print(ruthSavings + "\n");
-		System.out.print(ruthCurrent + "\n");
 
 	}
 }

@@ -17,9 +17,17 @@ public class SavingsAccount extends BankAccount{
 
 	public void addInterest(){
 		double interestAmount = getAccountBalance() * (interestRate / 100);
-
-
 		setAccountBalance(getAccountBalance() + interestAmount);
 		System.out.print("You have earned: " + interestAmount + " in interest, this has been added to your account, new balance: " + getAccountBalance() + "\n");
 	}
+
+	public void transferFunds(double transferAmount, BankAccount toAccount){
+		try{
+			if((getAccountBalance() - transferAmount) < 0) throw new OverDrawnException();
+			setAccountBalance(getAccountBalance() - transferAmount);
+			toAccount.setAccountBalance(toAccount.getAccountBalance() + transferAmount);
+		}catch(OverDrawnException e){
+			System.out.println("This account type cannot go overdrawn.");
+		}
+	} 
 }
