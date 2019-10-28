@@ -10,13 +10,16 @@ public class Column{
 		this.columnCounter = new Counter[this.numRows];
 	}
 
+	// Checks instance of coulumn for 'full' status and returns whether true or false
 	public Boolean isFull(){
 		if(columnCounter[numRows-1] == null){
 			return false;
 		} else return true;
 	}
 
-	public Boolean add(Counter z){	
+	// Sets logic of adding counter to a column, allowing addition if column is not full
+	// Returns true if addition is successful
+	public Boolean add(Counter z){
 		if(isFull() == false){
 			columnCounter[row] = z;
 			row++;
@@ -24,7 +27,8 @@ public class Column{
 		}
 		return false;
 	}
-
+	
+	// Defines string of a sinle row's value within a column
 	public String displayRow(int row){
 		try{
 			return columnCounter[row].toString();
@@ -32,16 +36,19 @@ public class Column{
 			return " ";
 		}
 	}
-
+	
+	// Defines a string with column of counters
 	public String display(){
 		int i = 0;
 		int j = 0;
+		// Initialising return string
 		String displayOutput = "";
+		// Loop through each row within a column and append counter symbols to String
 		for(i = numRows-1; j<numRows; i--){
 			displayOutput += displayRow(i) + "\n";
 			j++;
 		}
-		System.out.print(displayOutput);
+		System.out.print(displayOutput); // Print String as console output for assessment testing purposes
 		return displayOutput;
 	}
 }
