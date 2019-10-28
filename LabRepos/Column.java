@@ -33,12 +33,15 @@ public class Column{
 		}
 	}
 
-	public void display(){
+	public String display(){
 		int i = 0;
 		int j = 0;
-		for(i = numRows-1; j<=numRows-1; i--){
-			System.out.println(displayRow(i));
+		String displayOutput = "";
+		for(i = numRows-1; j<numRows; i--){
+			displayOutput += displayRow(i) + "\n";
 			j++;
 		}
+		System.out.print(displayOutput);
+		return displayOutput;
 	}
 }

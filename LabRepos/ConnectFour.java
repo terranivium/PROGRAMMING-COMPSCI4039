@@ -1,4 +1,7 @@
 public class ConnectFour{
+
+
+
 	public static void main(String[] args){
 		// Player p1 = new Player("Clive",'x');
 		// Counter c = new Counter(p1);
@@ -42,5 +45,9 @@ public class ConnectFour{
 		board.add(new Counter(p1),6);
 
 		System.out.print(board.toString());
+
+		System.out.println(board.isFull());
+
+
 		}
 }

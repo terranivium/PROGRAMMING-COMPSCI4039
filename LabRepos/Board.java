@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Board{
 
 	private int rows;
@@ -14,16 +16,28 @@ public class Board{
 		}
 	}
 
+	public Boolean isFull(){
+		return this.board.toString().contains(" ");
+	}
+
 	public Boolean add(Counter z, int columnNumber){
-		if(board[columnNumber].add(z) == true){
-			board[columnNumber].add(z);
-			return true;
-		} else return false;
+		return this.board[columnNumber].add(z);
 	}
 
 	public String toString(){
-		for(int i = 0; i<=columns-1;i++){
-			return board[i].display().toString();
+		String header = "";
+		for(int c=0;c<this.columns;c++){
+			header += "|" + c;
 		}
+		header += "|" + "\n" + new String(new char[this.columns*2]).replace("\0", "-");
+
+		String displayOutputBoard = header + "\n";
+		for(int i=this.rows-1;i>=0;i--){
+			for(int j=0;j<this.columns;j++){
+				displayOutputBoard += "|" + this.board[j].displayRow(i);
+			}
+			displayOutputBoard += "|" + "\n";
+		}
+		return displayOutputBoard;
 	}
 }
