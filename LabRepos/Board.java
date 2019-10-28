@@ -17,7 +17,12 @@ public class Board{
 	}
 
 	public Boolean isFull(){
-		return this.board.toString().contains(" ");
+		for(int i=0;i<this.columns;i++){
+			if(!this.board[i].isFull()){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public Boolean add(Counter z, int columnNumber){
@@ -38,6 +43,7 @@ public class Board{
 			}
 			displayOutputBoard += "|" + "\n";
 		}
+		System.out.print(displayOutputBoard);
 		return displayOutputBoard;
 	}
 }
