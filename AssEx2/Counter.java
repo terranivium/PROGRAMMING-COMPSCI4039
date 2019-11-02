@@ -1,7 +1,10 @@
+// Wesley Scott, 2460681S
+
 public class Counter{
 
 	private Player player;
 
+	// Task 1b Counter
 	public Counter(Player player){
 		this.player = player;
 	}
@@ -14,6 +17,7 @@ public class Counter{
 		this.player = newPlayer;
 	}
 
+	// Checks if passed object is a counter from the same player (Task 1d)
 	public boolean equals(Object o){
 		if(o instanceof Counter){
 			Counter a = (Counter) o;
@@ -22,6 +26,7 @@ public class Counter{
 		return false;
 	}
 
+	// To string set to achieve Task 1c requirement, output symbol of player counter
 	public String toString(){
 		return Character.toString(this.player.getSymbol());
 	}

@@ -1,5 +1,6 @@
-import java.util.Arrays;
+// Wesley Scott, 2460681S
 
+// Task 3 Board
 public class Board{
 
 	private int rows;
@@ -17,12 +18,30 @@ public class Board{
 		}
 	}
 
-	// public playerHasWon(){
-	// // Checks if either player has achieved a winning position
-	// }
+	// Checks if a player has achieved a winning 4-in-a-row position (Task 5) 
+	// Currently only working with columns
+	public Boolean playerVictory(Counter token, int column){
+		int counters = 0;
+		int lastCheckerPos = this.board[column].getRow();
 
-	public Boolean isFull(){
+		// If the number of counters added to column is less than 4, not possible for winning position
+		if (lastCheckerPos < 4){
+			return false;
+		}
+		while(lastCheckerPos > 0 || counters < 4){
+			if (this.board[column].getCounter(lastCheckerPos-1).equals(token)) {
+				counters++;
+				lastCheckerPos--;
+			} else break;
+		}
+		if (counters == 4){
+			return true;
+		}
+		return false;
+	}
+
 	// Checks all coulumns for 'full' status and returns whether true or false (Task 3e)
+	public Boolean isFull(){
 		for(int i=0;i<this.columns;i++){
 			if(!this.board[i].isFull()){
 				return false;
@@ -31,19 +50,19 @@ public class Board{
 		return true;
 	}
 
+	// Adds a new counter to a given column, returns a Boolean value depending on wether this action was successful (Task 3b)
 	public Boolean add(Counter z, int columnNumber){
-	// Adds a new counter to a given column, returns a Boolean value depending on wether this action was successful
 		return this.board[columnNumber].add(z);
 	}
 
+	// Creation of game board as string(Task 3c)
 	public String toString(){
-	// Creation of game board as string
-		// Create dynamic header based on number of columns
+		// Create string for board header based on number of columns
 		String header = "";
 		for(int c=0;c<this.columns;c++){
 			header += "|" + c;
 		}
-		// Creates the divider between header and main table
+		// Create divider between header and main table, considers number of columns
 		header += "|" + "\n" + new String(new char[this.columns*2]).replace("\0", "-");
 
 		// Create return String and append header

@@ -1,8 +1,11 @@
+// Wesley Scott, 2460681S
+
 public class Player{
 
 	private String name;
 	private char symbol;
 
+	// Task 1a Game Player
 	public Player(String name, char symbol){
 		this.name = name;
 		this.symbol = symbol;
@@ -20,6 +23,7 @@ public class Player{
 		return this.symbol;
 	}
 
+	// Sets player counter symbol
 	public void setSymbol(char newSymbol){
 		this.symbol = newSymbol;
 	}

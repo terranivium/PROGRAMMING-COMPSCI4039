@@ -1,3 +1,5 @@
+// Wesley Scott, 2460681S
+
 import java.util.Random;
 
 public class ConnectFour{
@@ -13,14 +15,45 @@ public class ConnectFour{
 
 		Random r = new Random();
 
-		// Random play loop which runs while at least one column is not full
-		while(board.isFull() != true){
-			board.add(new Counter(p1),r.nextInt(columns));
-			board.add(new Counter(p2),r.nextInt(columns));
+		// Random play loop which runs while at least one column is not full, and neither player has won.
+		
+		Boolean playerOneVictory = false;
+		Boolean playerTwoVictory = false;
+
+		while(!board.isFull()){
+			int column1 = r.nextInt(columns);
+			board.add(new Counter(p1), column1);
+			playerOneVictory = board.playerVictory(new Counter(p1), column1);
+
+			if (playerOneVictory || playerTwoVictory){
+				if(playerOneVictory){ 
+					System.out.println("Player One Wins!");
+					break;
+				}
+				if(playerTwoVictory){
+					System.out.println("Player Two Wins!");
+					break;
+				} 
+			}
+
+			int column2 = r.nextInt(columns);
+			board.add(new Counter(p2), column2);
+			playerTwoVictory = board.playerVictory(new Counter(p2), column2);
+
+			if (playerOneVictory || playerTwoVictory){
+				if(playerOneVictory){ 
+					System.out.println("Player One Wins!");
+					break;
+				}
+				if(playerTwoVictory){
+					System.out.println("Player Two Wins!");
+					break;
+				} 
+			}
 		}
+		// Creates string for output of completed game state 
 		board.toString(); 
-		/* Creates string for output of completed game board 
-		(I have set this function to call System.out.print for ease of testing task requirements) */
+		// (this toString function calls System.out.print before return for ease of testing assessment requirements)
 	}
 
 	public static void main(String[] args){
