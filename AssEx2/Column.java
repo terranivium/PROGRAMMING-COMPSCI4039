@@ -13,11 +13,11 @@ public class Column{
 		this.columnCounter = new Counter[this.numRows];
 	}
 
-	public int getRow() {
+	public int getRow(){
 		return this.row;
 	}
 
-	public Counter getCounter(int position) {
+	public Counter getCounter(int position){
 		return this.columnCounter[position];
 	}
 

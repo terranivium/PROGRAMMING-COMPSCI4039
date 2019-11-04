@@ -23,7 +23,7 @@ public class ConnectFour{
 		while(!board.isFull()){
 			int column1 = r.nextInt(columns);
 			board.add(new Counter(p1), column1);
-			playerOneVictory = board.playerVictory(new Counter(p1), column1);
+			playerOneVictory = board.checkVictory(new Counter(p1), column1);
 
 			if (playerOneVictory || playerTwoVictory){
 				if(playerOneVictory){ 
@@ -38,7 +38,7 @@ public class ConnectFour{
 
 			int column2 = r.nextInt(columns);
 			board.add(new Counter(p2), column2);
-			playerTwoVictory = board.playerVictory(new Counter(p2), column2);
+			playerTwoVictory = board.checkVictory(new Counter(p2), column2);
 
 			if (playerOneVictory || playerTwoVictory){
 				if(playerOneVictory){ 

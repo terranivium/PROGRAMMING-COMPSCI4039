@@ -18,25 +18,144 @@ public class Board{
 		}
 	}
 
-	// Checks if a player has achieved a winning 4-in-a-row position (Task 5) 
-	// Currently only working with columns
-	public Boolean playerVictory(Counter token, int column){
+	public int getColumns(){
+		return this.columns;
+	}
+
+	// Checks if a player has achieved a winning 4-in-a-row position (Task 5)
+	public Boolean checkVictory(Counter token, int column){
+		if(playerVictoryColumn(token, column) || playerVictoryRow(token, column) || playerVictoryDiagonalDLUR(token, column) || playerVictoryDiagonalULDR(token, column)){
+			return true;
+		}
+		return false;
+	}
+
+	// columns
+	public Boolean playerVictoryColumn(Counter token, int column){
 		int counters = 0;
-		int lastCheckerPos = this.board[column].getRow();
+		int lastCounterPos = this.board[column].getRow();
 
 		// If the number of counters added to column is less than 4, not possible for winning position
-		if (lastCheckerPos < 4){
+		if (lastCounterPos < 4){
 			return false;
 		}
-		while(lastCheckerPos > 0 || counters < 4){
-			if (this.board[column].getCounter(lastCheckerPos-1).equals(token)) {
+		while(lastCounterPos > 0 || counters < 4){
+			if (this.board[column].getCounter(lastCounterPos-1).equals(token)) {
 				counters++;
-				lastCheckerPos--;
+				lastCounterPos--;
 			} else break;
 		}
 		if (counters == 4){
 			return true;
 		}
+		return false;
+	}
+
+	// rows
+	public Boolean playerVictoryRow(Counter token, int column){
+		int counters = 1;
+		int lastCounterPos = this.board[column].getRow();
+
+		for (int i = 1; i<=4; i++){
+			int leftOfCol = column - i;
+			// Checking left
+			if(leftOfCol >= 0){
+				if(this.board[leftOfCol].getCounter(lastCounterPos-1) != null && this.board[leftOfCol].getCounter(lastCounterPos-1).equals(token)){
+					counters++;
+				} else {
+					// Break going left
+					break;
+				}
+			}
+		}
+		
+		for (int i = 1; i<=4; i++){
+			int rightOfCol = column + i;
+			// Checking right
+			if(rightOfCol < this.getColumns()){
+				if(this.board[rightOfCol].getCounter(lastCounterPos-1) != null && this.board[rightOfCol].getCounter(lastCounterPos-1).equals(token)){
+					counters++;
+				} else {
+					// Break going right
+					break;
+				}
+			}
+		}
+		if (counters >= 4) {
+			return true;
+		} 
+		return false;
+	}
+
+	// diagonals
+	public Boolean playerVictoryDiagonalDLUR(Counter token, int column){
+		int counters = 1;
+		int lastCounterPos = this.board[column].getRow();
+		for (int i = 1; i<=4; i++){
+			int downOfRow = lastCounterPos - 1 - i;
+			int leftOfCol = column - i;
+			// Checking left and down
+			if(leftOfCol >= 0 && downOfRow >= 0){
+				if(this.board[leftOfCol].getCounter(downOfRow) != null && this.board[leftOfCol].getCounter(downOfRow).equals(token)){
+					counters++;
+				} else {
+					// Break going left and down
+					break;
+				}
+			}
+		}
+		
+		for (int i = 1; i<=4; i++){
+			int upOfRow = lastCounterPos - 1 + i;
+			int rightOfCol = column + i;
+			// Checking right and up
+			if(rightOfCol < this.getColumns() && upOfRow < this.rows){
+				if(this.board[rightOfCol].getCounter(upOfRow) != null && this.board[rightOfCol].getCounter(upOfRow).equals(token)){
+					counters++;
+				} else {
+					// Break going right and up
+					break;
+				}
+			}
+		}
+		if (counters >= 4) {
+			return true;
+		} 
+		return false;
+	}
+	public Boolean playerVictoryDiagonalULDR(Counter token, int column){
+		int counters = 1;
+		int lastCounterPos = this.board[column].getRow();
+		for (int i = 1; i<=4; i++){
+			int upOfRow = lastCounterPos - 1 + i;
+			int leftOfCol = column - i;
+			// Checking left and up
+			if(leftOfCol >= 0 && upOfRow < this.rows){
+				if(this.board[leftOfCol].getCounter(upOfRow) != null && this.board[leftOfCol].getCounter(upOfRow).equals(token)){
+					counters++;
+				} else {
+					// Break going left and up
+					break;
+				}
+			}
+		}
+		
+		for (int i = 1; i<=4; i++){
+			int downOfRow = lastCounterPos - 1 - i;
+			int rightOfCol = column + i;
+			// Checking right and down
+			if(rightOfCol < this.getColumns() && downOfRow >= 0){
+				if(this.board[rightOfCol].getCounter(downOfRow) != null && this.board[rightOfCol].getCounter(downOfRow).equals(token)){
+					counters++;
+				} else {
+					// Break going right and down
+					break;
+				}
+			}
+		}
+		if (counters >= 4) {
+			return true;
+		} 
 		return false;
 	}
 
