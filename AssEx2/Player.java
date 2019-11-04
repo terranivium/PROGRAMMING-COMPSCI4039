@@ -1,11 +1,11 @@
 // Wesley Scott, 2460681S
 
+// Task 1a Player
 public class Player{
 
 	private String name;
 	private char symbol;
 
-	// Task 1a Game Player
 	public Player(String name, char symbol){
 		this.name = name;
 		this.symbol = symbol;

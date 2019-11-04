@@ -18,11 +18,18 @@ public class Board{
 		}
 	}
 
+	// Retrieve number of board columns
 	public int getColumns(){
 		return this.columns;
 	}
 
+	// Retrieve number of board rows
+	public int getRows(){
+		return this.rows;
+	}
+
 	// Checks if a player has achieved a winning 4-in-a-row position (Task 5)
+	// Calls various methods to check the columns, rows and diagonals
 	public Boolean checkVictory(Counter token, int column){
 		if(playerVictoryColumn(token, column) || playerVictoryRow(token, column) || playerVictoryDiagonalDLUR(token, column) || playerVictoryDiagonalULDR(token, column)){
 			return true;
@@ -30,7 +37,7 @@ public class Board{
 		return false;
 	}
 
-	// columns
+	// Column check
 	public Boolean playerVictoryColumn(Counter token, int column){
 		int counters = 0;
 		int lastCounterPos = this.board[column].getRow();
@@ -40,7 +47,7 @@ public class Board{
 			return false;
 		}
 		while(lastCounterPos > 0 || counters < 4){
-			if (this.board[column].getCounter(lastCounterPos-1).equals(token)) {
+			if (this.board[column].getCounter(lastCounterPos-1).equals(token)){
 				counters++;
 				lastCounterPos--;
 			} else break;
@@ -51,12 +58,12 @@ public class Board{
 		return false;
 	}
 
-	// rows
+	// Row check
 	public Boolean playerVictoryRow(Counter token, int column){
 		int counters = 1;
 		int lastCounterPos = this.board[column].getRow();
 
-		for (int i = 1; i<=4; i++){
+		for (int i = 1; i<4; i++){
 			int leftOfCol = column - i;
 			// Checking left
 			if(leftOfCol >= 0){
@@ -69,7 +76,7 @@ public class Board{
 			}
 		}
 		
-		for (int i = 1; i<=4; i++){
+		for (int i = 1; i<4; i++){
 			int rightOfCol = column + i;
 			// Checking right
 			if(rightOfCol < this.getColumns()){
@@ -87,11 +94,11 @@ public class Board{
 		return false;
 	}
 
-	// diagonals
+	// Diagonal check (down left, up right)
 	public Boolean playerVictoryDiagonalDLUR(Counter token, int column){
 		int counters = 1;
 		int lastCounterPos = this.board[column].getRow();
-		for (int i = 1; i<=4; i++){
+		for (int i = 1; i<4; i++){
 			int downOfRow = lastCounterPos - 1 - i;
 			int leftOfCol = column - i;
 			// Checking left and down
@@ -105,11 +112,11 @@ public class Board{
 			}
 		}
 		
-		for (int i = 1; i<=4; i++){
+		for (int i = 1; i<4; i++){
 			int upOfRow = lastCounterPos - 1 + i;
 			int rightOfCol = column + i;
 			// Checking right and up
-			if(rightOfCol < this.getColumns() && upOfRow < this.rows){
+			if(rightOfCol < this.getColumns() && upOfRow < this.getRows()){
 				if(this.board[rightOfCol].getCounter(upOfRow) != null && this.board[rightOfCol].getCounter(upOfRow).equals(token)){
 					counters++;
 				} else {
@@ -123,14 +130,16 @@ public class Board{
 		} 
 		return false;
 	}
+
+	// Diagonal check (up left, down right)
 	public Boolean playerVictoryDiagonalULDR(Counter token, int column){
 		int counters = 1;
 		int lastCounterPos = this.board[column].getRow();
-		for (int i = 1; i<=4; i++){
+		for (int i = 1; i<4; i++){
 			int upOfRow = lastCounterPos - 1 + i;
 			int leftOfCol = column - i;
 			// Checking left and up
-			if(leftOfCol >= 0 && upOfRow < this.rows){
+			if(leftOfCol >= 0 && upOfRow < this.getRows()){
 				if(this.board[leftOfCol].getCounter(upOfRow) != null && this.board[leftOfCol].getCounter(upOfRow).equals(token)){
 					counters++;
 				} else {
@@ -140,7 +149,7 @@ public class Board{
 			}
 		}
 		
-		for (int i = 1; i<=4; i++){
+		for (int i = 1; i<4; i++){
 			int downOfRow = lastCounterPos - 1 - i;
 			int rightOfCol = column + i;
 			// Checking right and down
@@ -161,7 +170,7 @@ public class Board{
 
 	// Checks all coulumns for 'full' status and returns whether true or false (Task 3e)
 	public Boolean isFull(){
-		for(int i=0;i<this.columns;i++){
+		for(int i=0;i<this.getColumns();i++){
 			if(!this.board[i].isFull()){
 				return false;
 			}
@@ -178,18 +187,18 @@ public class Board{
 	public String toString(){
 		// Create string for board header based on number of columns
 		String header = "";
-		for(int c=0;c<this.columns;c++){
+		for(int c=0;c<this.getColumns();c++){
 			header += "|" + c;
 		}
 		// Create divider between header and main table, considers number of columns
-		header += "|" + "\n" + new String(new char[this.columns*2]).replace("\0", "-");
+		header += "|" + "\n" + new String(new char[this.getColumns()*2]).replace("\0", "-");
 
 		// Create return String and append header
 		String displayOutputBoard = header + "\n";
 
 		// Populate output string table with correct coulmn and row foramtting
-		for(int i=this.rows-1;i>=0;i--){
-			for(int j=0;j<this.columns;j++){
+		for(int i=this.getRows()-1;i>=0;i--){
+			for(int j=0;j<this.getColumns();j++){
 				displayOutputBoard += "|" + this.board[j].displayRow(i);
 			}
 			displayOutputBoard += "|" + "\n";

@@ -1,12 +1,12 @@
 // Wesley Scott, 2460681S
 
+// Task 2a Column
 public class Column{
 
 	private int numRows;
 	private int row = 0;
 	private Counter[] columnCounter;
 
-	// Task 2a Column
 	public Column(int numRows){
 		this.numRows = numRows;
 		this.row = row;

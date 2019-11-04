@@ -1,10 +1,10 @@
 // Wesley Scott, 2460681S
 
+// Task 1b Counter
 public class Counter{
 
 	private Player player;
 
-	// Task 1b Counter
 	public Counter(Player player){
 		this.player = player;
 	}
