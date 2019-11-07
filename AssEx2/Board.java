@@ -10,9 +10,11 @@ public class Board{
 	public Board(int rows, int columns){
 		this.rows = rows;
 		this.columns = columns;
+
+		// This reference of board is a new array of Column with length columns
 		this.board = new Column[columns];
 
-		// Creation of row arrays for each column
+		// Creation of rows for each column
 		for(int i=0;i<columns;i++){
 			this.board[i] = new Column(rows);
 		}
@@ -29,7 +31,7 @@ public class Board{
 	}
 
 	// Checks if a player has achieved a winning 4-in-a-row position (Task 5)
-	// Calls various methods to check the columns, rows and diagonals
+	// Calls victory methods to check the columns, rows and diagonals
 	public Boolean checkVictory(Counter token, int column){
 		if(playerVictoryColumn(token, column) || playerVictoryRow(token, column) || playerVictoryDiagonalDLUR(token, column) || playerVictoryDiagonalULDR(token, column)){
 			return true;
@@ -37,32 +39,35 @@ public class Board{
 		return false;
 	}
 
-	// Column check
+	// Win with column check
 	public Boolean playerVictoryColumn(Counter token, int column){
-		int counters = 0;
+		int counters = 0; // records number of counters in a row
 		int lastCounterPos = this.board[column].getRow();
 
-		// If the number of counters added to column is less than 4, not possible for winning position
+		// Edge case, if the number of counters added to a column is less than 4, not possible for winning position
 		if (lastCounterPos < 4){
 			return false;
 		}
 		while(lastCounterPos > 0 || counters < 4){
+			// Checks if the lower counter in the column is of the same player reference
 			if (this.board[column].getCounter(lastCounterPos-1).equals(token)){
 				counters++;
-				lastCounterPos--;
+				lastCounterPos--; // down one row
 			} else break;
 		}
+		// Winning condition
 		if (counters == 4){
 			return true;
 		}
 		return false;
 	}
 
-	// Row check
+	// Win with row check
 	public Boolean playerVictoryRow(Counter token, int column){
-		int counters = 1;
+		int counters = 1; // starts at one as the added counter is counted
 		int lastCounterPos = this.board[column].getRow();
 
+		// Check to the left of the token added column
 		for (int i = 1; i<4; i++){
 			int leftOfCol = column - i;
 			// Checking left
@@ -76,6 +81,7 @@ public class Board{
 			}
 		}
 		
+		// Check to the right of the counter added column
 		for (int i = 1; i<4; i++){
 			int rightOfCol = column + i;
 			// Checking right
@@ -88,20 +94,21 @@ public class Board{
 				}
 			}
 		}
+		// Winning condition
 		if (counters >= 4) {
 			return true;
 		} 
 		return false;
 	}
 
-	// Diagonal check (down left, up right)
+	// Win with diagonal line check (down left, up right)
 	public Boolean playerVictoryDiagonalDLUR(Counter token, int column){
 		int counters = 1;
 		int lastCounterPos = this.board[column].getRow();
 		for (int i = 1; i<4; i++){
 			int downOfRow = lastCounterPos - 1 - i;
 			int leftOfCol = column - i;
-			// Checking left and down
+			// Checking left and down of added counter position
 			if(leftOfCol >= 0 && downOfRow >= 0){
 				if(this.board[leftOfCol].getCounter(downOfRow) != null && this.board[leftOfCol].getCounter(downOfRow).equals(token)){
 					counters++;
@@ -115,7 +122,7 @@ public class Board{
 		for (int i = 1; i<4; i++){
 			int upOfRow = lastCounterPos - 1 + i;
 			int rightOfCol = column + i;
-			// Checking right and up
+			// Checking right and up of added counter position
 			if(rightOfCol < this.getColumns() && upOfRow < this.getRows()){
 				if(this.board[rightOfCol].getCounter(upOfRow) != null && this.board[rightOfCol].getCounter(upOfRow).equals(token)){
 					counters++;
@@ -125,20 +132,21 @@ public class Board{
 				}
 			}
 		}
+		// Winning condition
 		if (counters >= 4) {
 			return true;
 		} 
 		return false;
 	}
 
-	// Diagonal check (up left, down right)
+	// Win with diagonal line check (up left, down right)
 	public Boolean playerVictoryDiagonalULDR(Counter token, int column){
 		int counters = 1;
 		int lastCounterPos = this.board[column].getRow();
 		for (int i = 1; i<4; i++){
 			int upOfRow = lastCounterPos - 1 + i;
 			int leftOfCol = column - i;
-			// Checking left and up
+			// Checking left and up of added counter position
 			if(leftOfCol >= 0 && upOfRow < this.getRows()){
 				if(this.board[leftOfCol].getCounter(upOfRow) != null && this.board[leftOfCol].getCounter(upOfRow).equals(token)){
 					counters++;
@@ -152,7 +160,7 @@ public class Board{
 		for (int i = 1; i<4; i++){
 			int downOfRow = lastCounterPos - 1 - i;
 			int rightOfCol = column + i;
-			// Checking right and down
+			// Checking right and down of added counter position
 			if(rightOfCol < this.getColumns() && downOfRow >= 0){
 				if(this.board[rightOfCol].getCounter(downOfRow) != null && this.board[rightOfCol].getCounter(downOfRow).equals(token)){
 					counters++;
@@ -162,6 +170,7 @@ public class Board{
 				}
 			}
 		}
+		// Winning condition
 		if (counters >= 4) {
 			return true;
 		} 
@@ -178,7 +187,8 @@ public class Board{
 		return true;
 	}
 
-	// Adds a new counter to a given column, returns a Boolean value depending on wether this action was successful (Task 3b)
+	// Adds a new counter to a given column
+	// Returns a Boolean value depending on wether this action was successful (Task 3b)
 	public Boolean add(Counter z, int columnNumber){
 		return this.board[columnNumber].add(z);
 	}

@@ -10,13 +10,15 @@ public class Column{
 	public Column(int numRows){
 		this.numRows = numRows;
 		this.row = row;
-		this.columnCounter = new Counter[this.numRows];
+		this.columnCounter = new Counter[this.numRows]; // columnCounter is a new array of Counters, length numRows
 	}
 
+	// Get row within column
 	public int getRow(){
 		return this.row;
 	}
 
+	// Get counter within column
 	public Counter getCounter(int position){
 		return this.columnCounter[position];
 	}

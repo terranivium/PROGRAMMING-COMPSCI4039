@@ -15,16 +15,16 @@ public class ConnectFour{
 
 		Random r = new Random();
 
-		// Random play loop which runs while at least one column is not full, and neither player has won.
-		
+		// Random play loop - runs while at least one column is not full, and neither player has won
 		Boolean playerOneVictory = false;
 		Boolean playerTwoVictory = false;
 
 		while(!board.isFull()){
 			int column1 = r.nextInt(columns);
 			board.add(new Counter(p1), column1);
-			playerOneVictory = board.checkVictory(new Counter(p1), column1);
+			playerOneVictory = board.checkVictory(new Counter(p1), column1); // Check for winning condition
 
+			// Assess if check has created winning condition for either player
 			if (playerOneVictory || playerTwoVictory){
 				if(playerOneVictory){ 
 					System.out.println("Player One Wins!");
@@ -38,8 +38,9 @@ public class ConnectFour{
 
 			int column2 = r.nextInt(columns);
 			board.add(new Counter(p2), column2);
-			playerTwoVictory = board.checkVictory(new Counter(p2), column2);
+			playerTwoVictory = board.checkVictory(new Counter(p2), column2); // Check for winning condition
 
+			// Assess if check has created winning condition for either player
 			if (playerOneVictory || playerTwoVictory){
 				if(playerOneVictory){ 
 					System.out.println("Player One Wins!");
@@ -53,18 +54,22 @@ public class ConnectFour{
 		}
 		// Creates string for output of completed game state 
 		board.toString(); 
-		// (this toString function calls System.out.print before return for ease of testing assessment requirements)
+		// (this toString function calls System.out.print before return statement for testing assessment requirements)
 	}
 
 	public static void main(String[] args){
 		
-		// // Task 1c test code
+		// // Task 1c/d test code
 		// Player p1 = new Player("Clive",'x');
 		// Counter c = new Counter(p1);
 		// System.out.println(c.getPlayer().toString() + ", " + c.toString());
 		// c.toString();
 
 		// // Task 1d test code
+		// Counter d = new Counter(p1);
+		// System.out.println(c.getPlayer().toString() + ", " + c.toString());
+		// d.toString();
+
 		// System.out.println(c.equals(d));
 
 		// // Task 2c test code
@@ -98,6 +103,7 @@ public class ConnectFour{
 		// board.add(new Counter(p1),5);
 		// board.add(new Counter(p2),6);
 		// board.add(new Counter(p1),6);
+		// board.toString();
 
 		// Call randomPlay method (Task 4)
 		randomPlay(6,7);
