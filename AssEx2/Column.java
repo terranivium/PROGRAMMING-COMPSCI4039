@@ -25,7 +25,7 @@ public class Column{
 
 	// Checks instance of coulumn for 'full' status and returns whether true or false (Task 2b)
 	public Boolean isFull(){
-		if(columnCounter[numRows-1] == null){
+		if(this.columnCounter[this.numRows-1] == null){
 			return false;
 		} else return true;
 	}
@@ -34,19 +34,19 @@ public class Column{
 	// Returns true if addition is successful (Task 2c)
 	public Boolean add(Counter z){
 		if(isFull() == false){
-			columnCounter[row] = z;
-			row++;
+			this.columnCounter[this.row] = z;
+			this.row++;
 			return true;
 		}
 		return false;
 	}
 	
 	// Defines string of a single row's value within a column (Task 2d)
-	public String displayRow(int row){
+	public String displayRow(int selectRow){
 		try{
-			return columnCounter[row].toString();
+			return this.columnCounter[selectRow].toString();
 		} catch(NullPointerException e){
-			return " ";
+			return " "; // If there is no Counter in the selected row, add a blank space to the String
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class Column{
 		String displayOutput = "";
 		
 		// Loop through each row within a column and append counter symbols to String
-		for(i=numRows-1;j<numRows;i--){
+		for(i=this.numRows-1;j<this.numRows;i--){
 			displayOutput += displayRow(i) + "\n";
 			j++;
 		}
