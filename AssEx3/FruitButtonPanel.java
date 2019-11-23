@@ -12,28 +12,33 @@ private JButton buttonNewGame;
 		this.setLayout(new FlowLayout());
 
 		buttonSpin = new JButton("take a spin!");
-		buttonNewGame = new JButton("start new game")
+		buttonNewGame = new JButton("start new game");
 		buttonSpin.addActionListener(parent);
 		buttonNewGame.addActionListener(parent);
 
 		this.add(buttonSpin);
 		this.add(buttonNewGame);
-
-		buttonSpin.setEnable(false);
-		buttonNewGame.setEnable(true);
 	}
 	
 	public void buttonState(boolean gameState){
 		if(buttonNewGame.getModel().isPressed()){
         	System.out.println("New Game Start");
-			buttonSpin.setEnable(true);
-			buttonNewGame.setEnable(false);
+			buttonSpin.setEnabled(true);
+			buttonNewGame.setEnabled(false);
 		if(buttonSpin.getModel().isPressed()){
 			if(gameState == true){
-				buttonNewGame.setEnable(true);
-				buttonSpin.setEnable(false);
+				buttonNewGame.setEnabled(true);
+				buttonSpin.setEnabled(false);
 			} 
 		}
 		}
+	}
+
+	public JButton getSpinButton() {
+		return this.buttonSpin;
+	}
+
+	public JButton getNewGameButton() {
+		return this.buttonNewGame;
 	}
 }
