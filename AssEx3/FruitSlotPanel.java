@@ -1,8 +1,5 @@
-//import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 public class FruitSlotPanel extends JPanel{
@@ -11,11 +8,11 @@ private JLabel slotMid;
 private JLabel slotRight;
 
 	public FruitSlotPanel(){
-		this.setLayout(new GridLayout());
+		this.setLayout(new GridLayout(1, 3));
 
-		slotLeft = new JLabel("Kiss");
-		slotMid = new JLabel("My");
-		slotRight = new JLabel("ASS");
+		slotLeft = new JLabel();
+		slotMid = new JLabel();
+		slotRight = new JLabel();
 
 		this.add(slotLeft);
 		this.add(slotMid);

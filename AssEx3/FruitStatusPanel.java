@@ -1,20 +1,18 @@
-//import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
+import java.awt.GridLayout;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 public class FruitStatusPanel extends JPanel{
-private JTextField balance;
-private JTextField message;
-private JTextField victory;
+private JLabel balance;
+private JLabel message;
+private JLabel victory;
 
 	public FruitStatusPanel(){
-		this.setLayout(new FlowLayout());
+		this.setLayout(new GridLayout(3, 1));
 
-		balance = new JTextField(14);
-		message = new JTextField(35);
-		victory = new JTextField(8);
+		balance = new JLabel();
+		message = new JLabel();
+		victory = new JLabel();
 
 		this.add(balance);
 		this.add(message);

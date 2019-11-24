@@ -2,7 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import java.util.Random;
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 // Model
 public class FruitMachine extends JFrame implements ActionListener{
@@ -11,27 +11,31 @@ private FruitStatusPanel statusPanel;
 private FruitSlotPanel slotPanel;
 private FruitButtonPanel buttonPanel;
 
-private String[] possibleCards = {"Ace", "King", "Queen", "Jack", "Joker"};
+private String[] possibleCards = {"ace", "king", "queen", "jack", "joker"};
 private String[] selectedCards = new String[3];
 private int playerBalance;
 private boolean gameState = false; // f - game off, t - game on
 
 	public FruitMachine(){
-		this.setSize(800,600);
-		this.setLocation(20,20);
+		// View
+		this.setSize(400,400);
+		this.setLocation(100,100);
+		this.setTitle("FruitMachine, AssEx3, 2460681S");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(new FlowLayout());
-// View
+		this.setLayout(new BorderLayout());
+
 		statusPanel = new FruitStatusPanel();
 		slotPanel = new FruitSlotPanel();
-// Controller
+
+		// Controller
 		buttonPanel = new FruitButtonPanel(this);
+		buttonPanel.buttonState(this.gameState);
 
 		playerBalance = 100;
 
-		add(statusPanel);
-		add(slotPanel);
-		add(buttonPanel);
+		add(statusPanel, BorderLayout.NORTH);
+		add(slotPanel, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.SOUTH);
 	}
 
 	public int[] getCardsCount(){
@@ -43,7 +47,6 @@ private boolean gameState = false; // f - game off, t - game on
 					counts[i]++;
 				}
 			}
-		 	//toCheck.length() - toCheck.replaceAll(card, "").length();
 		}
 		return counts;
 	}
@@ -69,7 +72,7 @@ private boolean gameState = false; // f - game off, t - game on
 				for (int i = 0; i<4; i++) {
 					if (counts[i] > 1) {
 						this.playerBalance = this.playerBalance + counts[i]*25;
-						statusPanel.updateText(this.playerBalance, String.format("%d %s s, you win %d credits!", counts[i], this.possibleCards[i], counts[i]*(25)));
+						statusPanel.updateText(this.playerBalance, String.format("%d %s" + "s, you win %d credits!", counts[i], this.possibleCards[i], counts[i]*(25)));
 
 					}
 				}

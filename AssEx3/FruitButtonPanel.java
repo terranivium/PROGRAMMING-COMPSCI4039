@@ -1,5 +1,4 @@
-//import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
@@ -9,7 +8,7 @@ private JButton buttonSpin;
 private JButton buttonNewGame;
 
 	public FruitButtonPanel(ActionListener parent){
-		this.setLayout(new FlowLayout());
+		this.setLayout(new GridLayout(2, 1));
 
 		buttonSpin = new JButton("take a spin!");
 		buttonNewGame = new JButton("start new game");
@@ -21,17 +20,13 @@ private JButton buttonNewGame;
 	}
 	
 	public void buttonState(boolean gameState){
-		if(buttonNewGame.getModel().isPressed()){
-        	System.out.println("New Game Start");
+		if(gameState){
 			buttonSpin.setEnabled(true);
 			buttonNewGame.setEnabled(false);
-		if(buttonSpin.getModel().isPressed()){
-			if(gameState == true){
+		} else if(!gameState){
 				buttonNewGame.setEnabled(true);
 				buttonSpin.setEnabled(false);
-			} 
-		}
-		}
+		} 
 	}
 
 	public JButton getSpinButton() {
@@ -42,3 +37,4 @@ private JButton buttonNewGame;
 		return this.buttonNewGame;
 	}
 }
+
