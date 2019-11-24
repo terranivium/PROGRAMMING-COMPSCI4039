@@ -24,8 +24,8 @@ private JButton buttonNewGame;
 			buttonSpin.setEnabled(true);
 			buttonNewGame.setEnabled(false);
 		} else if(!gameState){
-				buttonNewGame.setEnabled(true);
-				buttonSpin.setEnabled(false);
+			buttonNewGame.setEnabled(true);
+			buttonSpin.setEnabled(false);
 		} 
 	}
 
