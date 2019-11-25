@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import java.util.Random;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
 // Model
 public class FruitMachine extends JFrame implements ActionListener{
@@ -57,8 +56,8 @@ private boolean gameState = false; // f - game off, t - game on
 		buttonPanel.buttonState(this.gameState);
 		statusPanel.updateText(this.playerBalance, String.format("Start a New Game!")); // Initial status message
 		statusPanel.updateVictory(""); // Reset victory status text
-
 	}
+	
 	// Count number of each cards to provide selected cards
 	public int[] getCardsCount(){
 		int[] counts = {0, 0, 0, 0, 0};
@@ -135,6 +134,4 @@ private boolean gameState = false; // f - game off, t - game on
 		FruitMachine gui =  new FruitMachine();
 		gui.setVisible(true);
 	}
-
-	
 }
