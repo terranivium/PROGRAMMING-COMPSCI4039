@@ -2,21 +2,23 @@
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-import java.awt.Dimension;
 
 // Card Slot panel
 public class FruitSlotPanel extends JPanel{
+
 // Card slots
 private JLabel slotLeft; 
 private JLabel slotMid;
 private JLabel slotRight;
 
 	public FruitSlotPanel(){
-		// Set layout manager for cards slots
+		// Set layout manager for cards slots JPanel
 		this.setLayout(new FlowLayout());
 
 		// Create card slots (JLabels)
@@ -25,7 +27,7 @@ private JLabel slotRight;
 		slotRight = new JLabel();
 
 		// Define and add border to each card slot
-		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+		Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 		slotLeft.setBorder(border);
 		slotMid.setBorder(border);
 		slotRight.setBorder(border);
@@ -56,11 +58,10 @@ private JLabel slotRight;
 		this.add(slotRight);
 	}
 	
+	// Update card slot display text
 	public void updateText(String[] cards){
-		// Card slot display text
-		slotLeft.setText("<html><u><b>" + cards[0] +"</b></u></html>");
-		slotMid.setText("<html><u><b>" + cards[1] +"</b></u></html>");
-		slotRight.setText("<html><u><b>" + cards[2] +"</b></u></html>");
+		slotLeft.setText(cards[0]);
+		slotMid.setText(cards[1]);
+		slotRight.setText(cards[2]);
 	}
-
 }

@@ -1,9 +1,12 @@
 // 2460681S, Wesley Scott
 
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 // Game button panel
 public class FruitButtonPanel extends JPanel{
@@ -15,8 +18,14 @@ private JButton buttonNewGame;
 		this.setLayout(new GridLayout(2, 1));
 
 		// Create NewGame and Spin buttons
-		buttonSpin = new JButton("take a spin!");
-		buttonNewGame = new JButton("start new game");
+		buttonSpin = new JButton("<html><b>Take a Spin!</b>");
+		buttonNewGame = new JButton("<html><b>Start New Game</b>");
+
+		buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+		buttonNewGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+		buttonSpin.setHorizontalAlignment(JButton.LEFT);
+		buttonNewGame.setHorizontalAlignment(JButton.LEFT);
+
 
 		// Add action listeners to buttons
 		buttonSpin.addActionListener(parent);
@@ -37,6 +46,7 @@ private JButton buttonNewGame;
 			buttonSpin.setEnabled(false);
 		} 
 	}
+
 	// Get spin button (for source check)
 	public JButton getSpinButton() {
 		return this.buttonSpin;
