@@ -1,29 +1,37 @@
+// 2460681S, Wesley Scott
+
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
+// Game status panel
 public class FruitStatusPanel extends JPanel{
-private JLabel balance;
-private JLabel message;
-private JLabel victory;
+private JLabel balance; // Balance status text
+private JLabel message; // Game status message
+private JLabel victory; // Victory status message
 
 	public FruitStatusPanel(){
+		// Set layout manager for status text
 		this.setLayout(new GridLayout(3, 1));
 
+		// Create the 3 different status messages (JLabels)
 		balance = new JLabel();
 		message = new JLabel();
 		victory = new JLabel();
 
+		// Add message texts JLabels to JPanel
 		this.add(balance);
 		this.add(message);
 		this.add(victory);
 	}
-	
+
+	// Set status messages with values provided by model
 	public void updateText(int currentBalance, String statusMessage){
 		balance.setText("Current Balance: " + currentBalance);
 		message.setText(statusMessage);
 	}
 
+	// Set victory condition text
 	public void updateVictory(String victoryStatus){
 		victory.setText(victoryStatus);
 	}
