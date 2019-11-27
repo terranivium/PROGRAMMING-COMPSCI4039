@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-// Card Slot panel
+// Card slot panel
 public class FruitSlotPanel extends JPanel{
 
 // Card slots
@@ -32,7 +32,7 @@ private JLabel slotRight;
 		slotMid.setBorder(border);
 		slotRight.setBorder(border);
 
-		// Specifies exact size for card slots
+		// Specifies exact size for card slot drawing
 		slotLeft.setPreferredSize(new Dimension(55, 90));
 		slotMid.setPreferredSize(new Dimension(55, 90));
 		slotRight.setPreferredSize(new Dimension(55, 90));
@@ -42,7 +42,7 @@ private JLabel slotRight;
 		slotMid.setHorizontalAlignment(JLabel.CENTER);
 		slotRight.setHorizontalAlignment(JLabel.CENTER);
 						
-		// Forces JLabel to draw		
+		// Forces JLabel to draw (for formatting)		
 		slotLeft.setOpaque(true);
 		slotMid.setOpaque(true);
 		slotRight.setOpaque(true);

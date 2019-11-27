@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 import java.util.Random;
 
-// Model Class
+// Main window/jframe
 public class FruitMachine extends JFrame implements ActionListener{
 private FruitStatusPanel statusPanel;
 private FruitSlotPanel slotPanel;
@@ -18,7 +18,7 @@ private FruitButtonPanel buttonPanel;
 private String[] possibleCards = {"Ace", "King", "Queen", "Jack", "<html><i>Joker</i>"}; // All possible card selections
 private String[] selectedCards = new String[3]; // Holds selected cards for slots
 private int playerBalance; // Holds players balance
-private boolean gameState = false; // False - Game inactive, True - Game active
+private boolean gameState; // False - Game inactive, True - Game active
 
 	public FruitMachine(){
 		// Main JFrame View Settings
@@ -53,20 +53,21 @@ private boolean gameState = false; // False - Game inactive, True - Game active
 		add(buttonPanel, c); // Add button panel to JFrame with layout constraints
 
 		playerBalance = 100; // Initial player balance
+		gameState = false; // Initial game state
 
 		buttonPanel.buttonState(this.gameState); // Initial button state
-		statusPanel.updateText(this.playerBalance, String.format("Start a New Game!")); // Initial status message
+		statusPanel.updateText(this.playerBalance, String.format("")); // Initial status message
 		statusPanel.updateVictory(""); // Initial victory status text
 	}
 	
 	// Get count number of each card within random selection
 	public int[] getCardsCount(){
-		int[] counts = {0, 0, 0, 0, 0}; // Initial count
+		int[] counts = {0, 0, 0, 0, 0}; // Initial counts
 		for (int i=0; i<5; i++){
 			String card = possibleCards[i];
 			for (String selectedCard : this.selectedCards){
 				if (card.equals(selectedCard)){
-					counts[i]++; // Increment count for i card
+					counts[i]++; // Increment count for i-th card
 				}
 			}
 		}

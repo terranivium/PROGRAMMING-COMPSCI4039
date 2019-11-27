@@ -21,11 +21,13 @@ private JButton buttonNewGame;
 		buttonSpin = new JButton("<html><b>Take a Spin!</b>");
 		buttonNewGame = new JButton("<html><b>Start New Game</b>");
 
+		// Manual position adjustment, remove button graphic
 		buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
 		buttonNewGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+
+		// Set text alignment
 		buttonSpin.setHorizontalAlignment(JButton.LEFT);
 		buttonNewGame.setHorizontalAlignment(JButton.LEFT);
-
 
 		// Add action listeners to buttons
 		buttonSpin.addActionListener(parent);

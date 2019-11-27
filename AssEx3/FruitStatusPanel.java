@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-// Game status panel
+// Game status text panel
 public class FruitStatusPanel extends JPanel{
 private JLabel balance; // Balance status text
 private JLabel message; // Game status message
@@ -27,6 +27,7 @@ private JLabel victory; // Victory status message
 		message.setHorizontalAlignment(JLabel.CENTER);
 		victory.setHorizontalAlignment(JLabel.CENTER);
 
+		// Manual position adjustment
 		balance.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 		message.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 		victory.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
@@ -39,7 +40,7 @@ private JLabel victory; // Victory status message
 
 	// Set status messages with values provided by model
 	public void updateText(int currentBalance, String statusMessage){
-		balance.setText("Current Balance: " + currentBalance);
+		balance.setText("Player Balance: " + currentBalance);
 		message.setText(statusMessage);
 	}
 
