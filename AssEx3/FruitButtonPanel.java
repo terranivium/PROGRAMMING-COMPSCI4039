@@ -10,9 +10,11 @@ import javax.swing.border.Border;
 
 // Game button panel
 public class FruitButtonPanel extends JPanel{
+	
 private JButton buttonSpin;
 private JButton buttonNewGame;
 
+	// Controller listens to model, therefore is passed parent model class
 	public FruitButtonPanel(ActionListener parent){
 		// Set layout manager for button panel
 		this.setLayout(new GridLayout(2, 1));
@@ -21,7 +23,7 @@ private JButton buttonNewGame;
 		buttonSpin = new JButton("<html><b>Take a Spin!</b>");
 		buttonNewGame = new JButton("<html><b>Start New Game</b>");
 
-		// Manual position adjustment, remove button graphic
+		// Manual position adjustment, removes button graphic
 		buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
 		buttonNewGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
 
@@ -37,8 +39,18 @@ private JButton buttonNewGame;
 		this.add(buttonSpin);
 		this.add(buttonNewGame);
 	}
+
+	// Getter for spin button (for action event source check)
+	public JButton getSpinButton(){
+		return this.buttonSpin;
+	}
+
+	// Getter for new game button (for action event source check)
+	public JButton getNewGameButton(){
+		return this.buttonNewGame;
+	}
 	
-	// Set button state
+	// Set button states
 	public void buttonState(boolean gameState){
 		if(gameState){ // If game is active, spin button enabled, new game disabled.
 			buttonSpin.setEnabled(true);
@@ -47,16 +59,6 @@ private JButton buttonNewGame;
 			buttonNewGame.setEnabled(true);
 			buttonSpin.setEnabled(false);
 		} 
-	}
-
-	// Get spin button (for source check)
-	public JButton getSpinButton() {
-		return this.buttonSpin;
-	}
-
-	// Get new game button (for source check)
-	public JButton getNewGameButton() {
-		return this.buttonNewGame;
 	}
 }
 

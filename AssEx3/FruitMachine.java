@@ -11,11 +11,13 @@ import java.util.Random;
 
 // Main window/jframe
 public class FruitMachine extends JFrame implements ActionListener{
+
 private FruitStatusPanel statusPanel;
 private FruitSlotPanel slotPanel;
 private FruitButtonPanel buttonPanel;
 
-private String[] possibleCards = {"Ace", "King", "Queen", "Jack", "<html><i>Joker</i>"}; // All possible card selections
+// Model attributes
+private String[] possibleCards = {"Ace", "King", "Queen", "Jack", "<html><i>Joker</i>"}; // All possible card selections (static)
 private String[] selectedCards = new String[3]; // Holds selected cards for slots
 private int playerBalance; // Holds players balance
 private boolean gameState; // False - Game inactive, True - Game active
@@ -45,7 +47,7 @@ private boolean gameState; // False - Game inactive, True - Game active
 		c.gridy = 1;
 		add(slotPanel, c); // Add card slot panel to JFrame with layout constraints
 
-		// Create new reference to button panel (Control)
+		// Create new reference to button panel (controller)
 		buttonPanel = new FruitButtonPanel(this);
 		c.ipadx = 20;
 		c.weightx = 0.0;
@@ -74,9 +76,9 @@ private boolean gameState; // False - Game inactive, True - Game active
 		return counts;
 	}
 
-	// On input
+	// Controller on input function, contains game logic
 	public void actionPerformed(ActionEvent e){
-		// Spin Button Pressed
+		// If spin button is pressed
 		if (e.getSource() == buttonPanel.getSpinButton()){
 			// Get 3 new random cards
 			for (int i = 0; i<3; i++){
@@ -95,7 +97,7 @@ private boolean gameState; // False - Game inactive, True - Game active
 				String pluralJ = "";
 				this.playerBalance = this.playerBalance - counts[4]*25;
 				if(counts[4] > 1) pluralJ = "s";
-				statusPanel.updateText(this.playerBalance, String.format("%d Joker" + pluralJ + ", you lose %d credits!", counts[4], counts[4]*(-25)));
+				statusPanel.updateText(this.playerBalance, String.format("%d Joker%s, you lose %d credits!", counts[4], pluralJ, counts[4]*(-25)));
 			} else {
 				int oldBalance = this.playerBalance; // Store for balance comparison
 				for (int i = 0; i<4; i++){
@@ -125,7 +127,7 @@ private boolean gameState; // False - Game inactive, True - Game active
 				this.buttonPanel.buttonState(false); // Set button enable/disable state
 				statusPanel.updateVictory("You lose! Try again?");
 			}
-		// New Game button pressed
+		// If new game button is pressed
 		} else if (e.getSource() == buttonPanel.getNewGameButton()){
 			String[] emptyCards = {" "," "," "}; 
 			slotPanel.updateText(emptyCards); // reset card slot display to empty
@@ -136,9 +138,9 @@ private boolean gameState; // False - Game inactive, True - Game active
 			statusPanel.updateVictory(""); // Reset victory status text
 		}
 	}
-
+	// Main method
 	public static void main(String[] args){
 		FruitMachine fm =  new FruitMachine(); // Create instance of FruitMachine
-		fm.setVisible(true); // Set frame visible
+		fm.setVisible(true); // Set gui visible
 	}
 }

@@ -12,7 +12,6 @@ import javax.swing.border.Border;
 // Card slot panel
 public class FruitSlotPanel extends JPanel{
 
-// Card slots
 private JLabel slotLeft; 
 private JLabel slotMid;
 private JLabel slotRight;

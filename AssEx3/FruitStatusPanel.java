@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 
 // Game status text panel
 public class FruitStatusPanel extends JPanel{
+	
 private JLabel balance; // Balance status text
 private JLabel message; // Game status message
 private JLabel victory; // Victory status message
@@ -44,7 +45,7 @@ private JLabel victory; // Victory status message
 		message.setText(statusMessage);
 	}
 
-	// Set victory condition text
+	// Set victory condition text provided by model
 	public void updateVictory(String victoryStatus){
 		victory.setText(victoryStatus);
 	}
