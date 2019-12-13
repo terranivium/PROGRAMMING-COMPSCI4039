@@ -12,44 +12,44 @@ import javax.swing.border.Border;
 // Card slot panel
 public class FruitSlotPanel extends JPanel{
 
-private JLabel slotLeft; 
-private JLabel slotMid;
-private JLabel slotRight;
+	private JLabel slotLeft; 
+	private JLabel slotMid;
+	private JLabel slotRight;
 
 	public FruitSlotPanel(){
-		// Set layout manager for cards slots JPanel
+		// Set layout manager for card slots JPanel
 		this.setLayout(new FlowLayout());
 
 		// Create card slots (JLabels)
-		slotLeft = new JLabel();
-		slotMid = new JLabel();
-		slotRight = new JLabel();
+		this.slotLeft = new JLabel();
+		this.slotMid = new JLabel();
+		this.slotRight = new JLabel();
 
 		// Define and add border to each card slot
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
-		slotLeft.setBorder(border);
-		slotMid.setBorder(border);
-		slotRight.setBorder(border);
+		this.slotLeft.setBorder(border);
+		this.slotMid.setBorder(border);
+		this.slotRight.setBorder(border);
 
 		// Specifies exact size for card slot drawing
-		slotLeft.setPreferredSize(new Dimension(55, 90));
-		slotMid.setPreferredSize(new Dimension(55, 90));
-		slotRight.setPreferredSize(new Dimension(55, 90));
+		this.slotLeft.setPreferredSize(new Dimension(55, 90));
+		this.slotMid.setPreferredSize(new Dimension(55, 90));
+		this.slotRight.setPreferredSize(new Dimension(55, 90));
 
 		// Set horizontal alignment of each card slot
-		slotLeft.setHorizontalAlignment(JLabel.CENTER);
-		slotMid.setHorizontalAlignment(JLabel.CENTER);
-		slotRight.setHorizontalAlignment(JLabel.CENTER);
+		this.slotLeft.setHorizontalAlignment(JLabel.CENTER);
+		this.slotMid.setHorizontalAlignment(JLabel.CENTER);
+		this.slotRight.setHorizontalAlignment(JLabel.CENTER);
 						
 		// Forces JLabel to draw (for formatting)		
-		slotLeft.setOpaque(true);
-		slotMid.setOpaque(true);
-		slotRight.setOpaque(true);
+		this.slotLeft.setOpaque(true);
+		this.slotMid.setOpaque(true);
+		this.slotRight.setOpaque(true);
 
 		// Set card slot background colour
-		slotLeft.setBackground(Color.YELLOW);
-		slotMid.setBackground(Color.YELLOW);
-		slotRight.setBackground(Color.YELLOW);
+		this.slotLeft.setBackground(Color.YELLOW);
+		this.slotMid.setBackground(Color.YELLOW);
+		this.slotRight.setBackground(Color.YELLOW);
 
 		// Add card slot JLabels to JPanel
 		this.add(slotLeft);
@@ -59,8 +59,8 @@ private JLabel slotRight;
 	
 	// Update card slot display text
 	public void updateText(String[] cards){
-		slotLeft.setText(cards[0]);
-		slotMid.setText(cards[1]);
-		slotRight.setText(cards[2]);
+		this.slotLeft.setText(cards[0]);
+		this.slotMid.setText(cards[1]);
+		this.slotRight.setText(cards[2]);
 	}
 }

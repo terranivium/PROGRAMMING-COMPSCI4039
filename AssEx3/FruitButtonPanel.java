@@ -10,30 +10,29 @@ import javax.swing.border.Border;
 
 // Game button panel
 public class FruitButtonPanel extends JPanel{
-	
-private JButton buttonSpin;
-private JButton buttonNewGame;
+		
+	private JButton buttonSpin;
+	private JButton buttonNewGame;
 
-	// Controller listens to model, therefore is passed parent model class
 	public FruitButtonPanel(ActionListener parent){
 		// Set layout manager for button panel
 		this.setLayout(new GridLayout(2, 1));
 
 		// Create NewGame and Spin buttons
-		buttonSpin = new JButton("<html><b>Take a Spin!</b>");
-		buttonNewGame = new JButton("<html><b>Start New Game</b>");
+		this.buttonSpin = new JButton("<html><b>Take a Spin!</b>");
+		this.buttonNewGame = new JButton("<html><b>Start New Game</b>");
 
 		// Manual position adjustment, removes button graphic
-		buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
-		buttonNewGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+		this.buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+		this.buttonNewGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
 
 		// Set text alignment
-		buttonSpin.setHorizontalAlignment(JButton.LEFT);
-		buttonNewGame.setHorizontalAlignment(JButton.LEFT);
+		this.buttonSpin.setHorizontalAlignment(JButton.LEFT);
+		this.buttonNewGame.setHorizontalAlignment(JButton.LEFT);
 
 		// Add action listeners to buttons
-		buttonSpin.addActionListener(parent);
-		buttonNewGame.addActionListener(parent);
+		this.buttonSpin.addActionListener(parent);
+		this.buttonNewGame.addActionListener(parent);
 
 		// Add buttons to the button pannel
 		this.add(buttonSpin);
@@ -53,11 +52,11 @@ private JButton buttonNewGame;
 	// Set button states
 	public void buttonState(boolean gameState){
 		if(gameState){ // If game is active, spin button enabled, new game disabled.
-			buttonSpin.setEnabled(true);
-			buttonNewGame.setEnabled(false);
+			this.buttonSpin.setEnabled(true);
+			this.buttonNewGame.setEnabled(false);
 		} else if(!gameState){ // If game is inactive, spin button disabled, new game enabled.
-			buttonNewGame.setEnabled(true);
-			buttonSpin.setEnabled(false);
+			this.buttonNewGame.setEnabled(true);
+			this.buttonSpin.setEnabled(false);
 		} 
 	}
 }
