@@ -1,7 +1,6 @@
 // 2460681S, Wesley Scott
 
 import java.awt.GridLayout;
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.BorderFactory;

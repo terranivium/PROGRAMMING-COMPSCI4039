@@ -2,7 +2,6 @@
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
@@ -19,8 +18,8 @@ public class FruitButtonPanel extends JPanel{
 		this.setLayout(new GridLayout(2, 1));
 
 		// Create NewGame and Spin buttons
-		this.buttonSpin = new JButton("<html><b>Take a Spin!</b>");
-		this.buttonNewGame = new JButton("<html><b>Start New Game</b>");
+		this.buttonSpin = new JButton("<html><b><u>Take a Spin!</u></b>");
+		this.buttonNewGame = new JButton("<html><b><u>Start New Game</u></b>");
 
 		// Manual position adjustment, removes button graphic
 		this.buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
@@ -30,7 +29,7 @@ public class FruitButtonPanel extends JPanel{
 		this.buttonSpin.setHorizontalAlignment(JButton.LEFT);
 		this.buttonNewGame.setHorizontalAlignment(JButton.LEFT);
 
-		// Add action listeners to buttons
+		// Provide event tracking to buttons
 		this.buttonSpin.addActionListener(parent);
 		this.buttonNewGame.addActionListener(parent);
 
@@ -39,22 +38,30 @@ public class FruitButtonPanel extends JPanel{
 		this.add(buttonNewGame);
 	}
 
-	// Getter for spin button (for action event source check)
+	public void setSpinButton(JButton newSpinButton){
+		this.buttonSpin = newSpinButton;
+	}
+
+	// Getter for spin button (for input source check)
 	public JButton getSpinButton(){
 		return this.buttonSpin;
 	}
 
-	// Getter for new game button (for action event source check)
+	public void setNewGameButton(JButton newNewGameButton){
+		this.buttonNewGame = newNewGameButton;
+	}
+
+	// Getter for new game button (for input source check)
 	public JButton getNewGameButton(){
 		return this.buttonNewGame;
 	}
 	
-	// Set button states
+	// Button view states
 	public void buttonState(boolean gameState){
-		if(gameState){ // If game is active, spin button enabled, new game disabled.
+		if(gameState){ // While game is active, spin button enabled, new game disabled.
 			this.buttonSpin.setEnabled(true);
 			this.buttonNewGame.setEnabled(false);
-		} else if(!gameState){ // If game is inactive, spin button disabled, new game enabled.
+		} else if(!gameState){ // If game is win/loss, spin button disabled, new game enabled.
 			this.buttonNewGame.setEnabled(true);
 			this.buttonSpin.setEnabled(false);
 		} 

@@ -56,10 +56,48 @@ public class FruitView extends JFrame{
 		this.statusPanel.updateVictory(""); // Initial victory status text
 	}
 
+	public FruitController getController() {
+		return this.controller;
+	}
+
+	public void setController(FruitController controller) {
+		this.controller = controller;
+	}
+
+	public FruitModel getModel() {
+		return this.model;
+	}
+
+	public void setModel(FruitModel model) {
+		this.model = model;
+	}
+
+	public FruitStatusPanel getStatusPanel() {
+		return this.statusPanel;
+	}
+
+	public void setStatusPanel(FruitStatusPanel statusPanel) {
+		this.statusPanel = statusPanel;
+	}
+
+	public FruitSlotPanel getSlotPanel() {
+		return this.slotPanel;
+	}
+
+	public void setSlotPanel(FruitSlotPanel slotPanel) {
+		this.slotPanel = slotPanel;
+	}
+
+	// For access to get individual buttons for input source check
 	public FruitButtonPanel getButtonPanel(){
 		return this.buttonPanel;
 	}
 
+	public void setButtonPanel(FruitButtonPanel buttonPanel) {
+		this.buttonPanel = buttonPanel;
+	}
+
+	// View state called on new game button press
 	public void newGameState(){
 		this.buttonPanel.buttonState(true); // Switches enabled and disabled buttons
 		
@@ -70,16 +108,7 @@ public class FruitView extends JFrame{
 		this.statusPanel.updateVictory(""); // Reset victory status text
 	}
 
-	public void victoryState(){
-		this.buttonPanel.buttonState(false); // Set button enable/disable state
-		this.statusPanel.updateVictory("You win! Play again?"); // View update
-	}
-
-	public void defeatState(){
-		this.buttonPanel.buttonState(false); // Set button enable/disable state
-		this.statusPanel.updateVictory("You lose! Try again?"); // View update
-	}
-
+	// View state called on spin button press
 	public void spinState(){
 		this.slotPanel.updateText(this.model.getSelectedCards());
 		this.statusPanel.updateBalance(this.model.getPlayerBalance());
@@ -89,5 +118,17 @@ public class FruitView extends JFrame{
 		} else if(this.model.getPlayerBalance() <= 0){
 			defeatState();
 		} else ;
+	}
+
+	// View state called on player victory
+	public void victoryState(){
+		this.buttonPanel.buttonState(false); // Set button enable/disable state
+		this.statusPanel.updateVictory("You win! Play again?"); // View update
+	}
+
+	// View state called on player defeat
+	public void defeatState(){
+		this.buttonPanel.buttonState(false); // Set button enable/disable state
+		this.statusPanel.updateVictory("You lose! Try again?"); // View update
 	}
 }

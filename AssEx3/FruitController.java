@@ -10,23 +10,38 @@ public class FruitController implements ActionListener{
 
 	public FruitController(FruitModel model){
 		this.model = model;
-		this.view = null;
+		this.view = null; // Null until setView called in main
 	}
 
 	public void setView(FruitView newView){
+		// View is set for controller by main method
 		this.view = newView;
 	}
 
-	public void actionPerformed(ActionEvent e){
-		if (e.getSource() == this.view.getButtonPanel().getSpinButton()){
-			this.model.updateSlots();
-			this.model.checkSlots();
-			// this.model.victoryCheck();
-			this.view.spinState();
+	public FruitView getView(){
+		return this.view;
+	}
 
+	public void setModel(FruitModel newModel){
+		this.model = newModel;
+	}
+
+	public FruitModel getModel(){
+		return this.model;
+	}
+
+
+	// Method call on user input
+	public void actionPerformed(ActionEvent e){
+		// If spin button is pressed
+		if (e.getSource() == this.view.getButtonPanel().getSpinButton()){
+			this.model.updateSlots(); // Select 3 new cards
+			this.model.checkSlots(); // Check those cards to update the play balance
+			this.view.spinState(); // Update the view to display new cards and outcome to player
+		// If new game button is pressed
 		} else if (e.getSource() == this.view.getButtonPanel().getNewGameButton()){
-			this.model.setPlayerBalance(100);
-			this.view.newGameState();
+			this.model.setPlayerBalance(100); // Re-initialise current player balance
+			this.view.newGameState(); // Reset view to initial game state
 		}
 	}
 }
