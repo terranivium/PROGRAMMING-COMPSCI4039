@@ -29,7 +29,6 @@ public class FruitController implements ActionListener{
 		return this.model;
 	}
 
-
 	// Method call on user input
 	public void actionPerformed(ActionEvent e){
 		// If spin button is pressed
