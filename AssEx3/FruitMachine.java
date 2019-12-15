@@ -22,6 +22,7 @@ FruitView: Game View/Interface
 */
 
 public class FruitMachine{
+	
 	// Main runtime method, creates MVC class instances
 	public static void main(String[] args){
 		FruitModel model = new FruitModel();

@@ -14,7 +14,6 @@ public class FruitStatusPanel extends JPanel{
 	private JLabel victory; // Victory status message
 
 	public FruitStatusPanel(){
-		// Panel View
 		// Set layout manager for status texts JPanel
 		this.setLayout(new GridLayout(3, 1, 0, 0));
 

@@ -3,6 +3,7 @@
 import java.util.Random;
 
 public class FruitModel{
+	
 	// Game model variables
 	private final String[] possibleCards = {"Ace", "King", "Queen", "Jack", "<html><i>Joker</i>"}; // Possible card selections
 	private String[] selectedCards = new String[3]; // Holds selected cards for slots

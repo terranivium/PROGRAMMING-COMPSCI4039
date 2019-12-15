@@ -5,10 +5,11 @@ import java.awt.GridBagConstraints;
 import javax.swing.JFrame;
 
 public class FruitView extends JFrame{
+
 	private FruitController controller;
 	private FruitModel model;
 
-	// View classes
+	// View panels (extending JPanel)
 	private FruitStatusPanel statusPanel;
 	private FruitSlotPanel slotPanel;
 	private FruitButtonPanel buttonPanel;
@@ -89,7 +90,7 @@ public class FruitView extends JFrame{
 		this.slotPanel = slotPanel;
 	}
 
-	// For access to get individual buttons for input source check
+	// Used for access to individual buttons for input source check
 	public FruitButtonPanel getButtonPanel(){
 		return this.buttonPanel;
 	}
@@ -108,7 +109,7 @@ public class FruitView extends JFrame{
 		this.buttonPanel.buttonState(true); // Set button enable/disable state
 	}
 
-	// View state called on spin button press
+	// View state update, called on spin button press
 	public void spinState(){
 		this.slotPanel.updateText(this.model.getSelectedCards());
 		this.statusPanel.updateBalance(this.model.getPlayerBalance());
