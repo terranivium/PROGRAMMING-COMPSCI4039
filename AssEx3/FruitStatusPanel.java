@@ -14,7 +14,7 @@ public class FruitStatusPanel extends JPanel{
 	private JLabel victory; // Victory status message
 
 	public FruitStatusPanel(){
-		// Set layout manager for status texts JPanel
+		// Set layout manager for this JPanel
 		this.setLayout(new GridLayout(3, 1, 0, 0));
 
 		// Create the 3 different status messages (JLabels)
@@ -27,12 +27,12 @@ public class FruitStatusPanel extends JPanel{
 		this.message.setHorizontalAlignment(JLabel.CENTER);
 		this.victory.setHorizontalAlignment(JLabel.CENTER);
 
-		// Manual position adjustment
+		// Manual position adjustment using transparent border
 		this.balance.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 		this.message.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 		this.victory.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 
-		// Add message texts JLabels to JPanel
+		// Add message text JLabels to JPanel
 		this.add(balance);
 		this.add(message);
 		this.add(victory);

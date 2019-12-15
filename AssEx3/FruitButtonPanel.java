@@ -10,9 +10,10 @@ import javax.swing.border.Border;
 // Game Button Panel
 public class FruitButtonPanel extends JPanel{
 		
-	private JButton buttonSpin;
-	private JButton buttonNewGame;
+	private JButton buttonSpin; // Spin card slots button
+	private JButton buttonNewGame; // New game button
 
+	// Button panel constructor, passed parent ActionListener (controller)
 	public FruitButtonPanel(ActionListener parent){
 		// Set layout manager for button panel
 		this.setLayout(new GridLayout(2, 1));
@@ -29,7 +30,7 @@ public class FruitButtonPanel extends JPanel{
 		this.buttonSpin.setHorizontalAlignment(JButton.LEFT);
 		this.buttonNewGame.setHorizontalAlignment(JButton.LEFT);
 
-		// Provide event tracking to buttons
+		// Provide event tracking to buttons, via parent controller
 		this.buttonSpin.addActionListener(parent);
 		this.buttonNewGame.addActionListener(parent);
 
@@ -67,4 +68,3 @@ public class FruitButtonPanel extends JPanel{
 		} 
 	}
 }
-

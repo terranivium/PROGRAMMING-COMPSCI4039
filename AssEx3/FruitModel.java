@@ -2,12 +2,13 @@
 
 import java.util.Random;
 
+// Game data model
 public class FruitModel{
 	
 	// Game model variables
 	private final String[] possibleCards = {"Ace", "King", "Queen", "Jack", "<html><i>Joker</i>"}; // Possible card selections
 	private String[] selectedCards = new String[3]; // Holds selected cards for slots
-	private int playerBalance; // Holds players balance, used to decide game state/victory conditions
+	private int playerBalance = 100; // Holds players balance, used to decide game state/victory conditions
 	private String statusText; // Holds text to be used for view status updates
 
 	public FruitModel(){

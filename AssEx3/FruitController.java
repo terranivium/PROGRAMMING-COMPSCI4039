@@ -3,18 +3,20 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Game controller class
 public class FruitController implements ActionListener{
 	
 	private FruitView view;
 	private FruitModel model;
 
+	// Controller is passed model, applicable view to set by main method
 	public FruitController(FruitModel model){
 		this.model = model;
 		this.view = null; // Null until setView called in main
 	}
 
+	// View is set for controller by main method
 	public void setView(FruitView newView){
-		// View is set for controller by main method
 		this.view = newView;
 	}
 

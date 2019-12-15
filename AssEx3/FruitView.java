@@ -4,6 +4,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JFrame;
 
+// Game view class
 public class FruitView extends JFrame{
 
 	private FruitController controller;
@@ -51,7 +52,7 @@ public class FruitView extends JFrame{
 		c.gridx = 1;
 		this.add(this.buttonPanel, c); // Add button panel to JFrame with layout constraints
 
-		// Initial View states
+		// Initial View states (before first new game button press)
 		this.buttonPanel.buttonState(false); // Initial button state
 		this.statusPanel.updateBalance(this.model.getPlayerBalance()); // Initial balance
 		this.statusPanel.updateStatus(String.format("")); // Reset status text
@@ -90,7 +91,7 @@ public class FruitView extends JFrame{
 		this.slotPanel = slotPanel;
 	}
 
-	// Used for access to individual buttons for input source check
+	// Used for access to individual buttons for input source check in controller
 	public FruitButtonPanel getButtonPanel(){
 		return this.buttonPanel;
 	}
