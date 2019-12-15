@@ -55,7 +55,31 @@ public class FruitSlotPanel extends JPanel{
 		this.add(slotMid);
 		this.add(slotRight);
 	}
-	
+
+	public JLabel getSlotLeft() {
+		return this.slotLeft;
+	}
+
+	public void setSlotLeft(JLabel slotLeft) {
+		this.slotLeft = slotLeft;
+	}
+
+	public JLabel getSlotMid() {
+		return this.slotMid;
+	}
+
+	public void setSlotMid(JLabel slotMid) {
+		this.slotMid = slotMid;
+	}
+
+	public JLabel getSlotRight() {
+		return this.slotRight;
+	}
+
+	public void setSlotRight(JLabel slotRight) {
+		this.slotRight = slotRight;
+	}
+
 	// Update card slot display text
 	public void updateText(String[] cards){
 		this.slotLeft.setText(cards[0]);

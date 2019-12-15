@@ -16,7 +16,7 @@ public class FruitStatusPanel extends JPanel{
 	public FruitStatusPanel(){
 		// Panel View
 		// Set layout manager for status texts JPanel
-		this.setLayout(new GridLayout(3, 1, 0, 10));
+		this.setLayout(new GridLayout(3, 1, 0, 0));
 
 		// Create the 3 different status messages (JLabels)
 		this.balance = new JLabel();
@@ -37,6 +37,30 @@ public class FruitStatusPanel extends JPanel{
 		this.add(balance);
 		this.add(message);
 		this.add(victory);
+	}
+
+	public JLabel getBalance() {
+		return this.balance;
+	}
+
+	public void setBalance(JLabel balance) {
+		this.balance = balance;
+	}
+
+	public JLabel getMessage() {
+		return this.message;
+	}
+
+	public void setMessage(JLabel message) {
+		this.message = message;
+	}
+
+	public JLabel getVictory() {
+		return this.victory;
+	}
+
+	public void setVictory(JLabel victory) {
+		this.victory = victory;
 	}
 
 	// Set balance with value provided by model

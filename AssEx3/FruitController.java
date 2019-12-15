@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FruitController implements ActionListener{
-
 	private FruitView view;
 	private FruitModel model;
 

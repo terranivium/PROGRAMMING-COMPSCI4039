@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-// Game button panel
+// Game Button Panel
 public class FruitButtonPanel extends JPanel{
 		
 	private JButton buttonSpin;
@@ -22,8 +22,8 @@ public class FruitButtonPanel extends JPanel{
 		this.buttonNewGame = new JButton("<html><b><u>Start New Game</u></b>");
 
 		// Manual position adjustment, removes button graphic
-		this.buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
-		this.buttonNewGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+		this.buttonSpin.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+		this.buttonNewGame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
 		// Set text alignment
 		this.buttonSpin.setHorizontalAlignment(JButton.LEFT);
@@ -42,7 +42,7 @@ public class FruitButtonPanel extends JPanel{
 		this.buttonSpin = newSpinButton;
 	}
 
-	// Getter for spin button (for input source check)
+	// Getter for spin button (used for input source check)
 	public JButton getSpinButton(){
 		return this.buttonSpin;
 	}
@@ -51,7 +51,7 @@ public class FruitButtonPanel extends JPanel{
 		this.buttonNewGame = newNewGameButton;
 	}
 
-	// Getter for new game button (for input source check)
+	// Getter for new game button (used for input source check)
 	public JButton getNewGameButton(){
 		return this.buttonNewGame;
 	}

@@ -2,7 +2,6 @@
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-
 import javax.swing.JFrame;
 
 public class FruitView extends JFrame{
@@ -14,6 +13,7 @@ public class FruitView extends JFrame{
 	private FruitSlotPanel slotPanel;
 	private FruitButtonPanel buttonPanel;
 
+	// View constructor
 	public FruitView(FruitController controller, FruitModel model){
 		this.controller = controller;
 		this.model = model;
@@ -25,7 +25,8 @@ public class FruitView extends JFrame{
 		this.setTitle("FruitMachine, 2460681S"); // Set window/frame title bar text
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Stop run on window/frame close
 		this.setLayout(new GridBagLayout()); // Set layout manager for JFrame
-		GridBagConstraints c = new GridBagConstraints(); // Create constraints for gridbag layout manager
+		
+		GridBagConstraints c = new GridBagConstraints(); // Holds constraints for gridbag layout manager
 		c.fill = GridBagConstraints.HORIZONTAL;
 
 		// Create new reference to status panel
@@ -52,7 +53,7 @@ public class FruitView extends JFrame{
 		// Initial View states
 		this.buttonPanel.buttonState(false); // Initial button state
 		this.statusPanel.updateBalance(this.model.getPlayerBalance()); // Initial balance
-		this.statusPanel.updateStatus(String.format(""));
+		this.statusPanel.updateStatus(String.format("")); // Reset status text
 		this.statusPanel.updateVictory(""); // Initial victory status text
 	}
 
@@ -99,13 +100,12 @@ public class FruitView extends JFrame{
 
 	// View state called on new game button press
 	public void newGameState(){
-		this.buttonPanel.buttonState(true); // Switches enabled and disabled buttons
-		
 		String[] emptyCards = {" "," "," "}; 
 		this.slotPanel.updateText(emptyCards); // reset card slot display to empty
 		this.statusPanel.updateBalance(this.model.getPlayerBalance()); // New Game balance
 		this.statusPanel.updateStatus(String.format("Press spin to get your cards!")); // New Game status message
 		this.statusPanel.updateVictory(""); // Reset victory status text
+		this.buttonPanel.buttonState(true); // Set button enable/disable state
 	}
 
 	// View state called on spin button press
